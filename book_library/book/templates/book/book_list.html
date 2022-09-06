@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{%block title%}書籍一覧{%endblock title%}
+
+{%block content%}
+<a href="{% url 'book-create'%}" class="btn btn-primary" style="margin:10px 0 10px 15px">作成する</a>
+    {%for item in object_list%}
+        <div class="card">
+            <h5 class="card-header">{{item.title}}</h5>
+            <div class="card-body">
+                <p class="card-text">{{item.text}}</p>
+                <a href="{% url 'book-detail' item.pk%}" class="btn btn-primary" style="margin:10px 0 10px 0">詳細へ</a>
+                <h6 class="card-title">{{item.category}}</h6>
+            </div>
+        </div>
+    {%endfor%}
+{%endblock content%}
